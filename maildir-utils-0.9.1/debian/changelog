@@ -1,0 +1,108 @@
+maildir-utils (0.9.1-1) unstable; urgency=low
+
+  * new version 0.9.1
+
+ -- R. Andrew Bailey <bailey@akamai.com>  Fri, 17 Dec 2010 08:12:33 -0500
+
+maildir-utils (0.7-2) unstable; urgency=low
+
+  * fix broken search of msgids, patch by Benjamin Mako Hill
+    (closes: #601072) (included upstream)
+  * fix clearing of symlinks, patch by Antonin Kral (upstream issue 28)
+    (closes: #578806)
+  * bump standards version to 3.9.1, no changes necessary
+
+ -- Norbert Preining <preining@debian.org>  Tue, 02 Nov 2010 00:08:03 +0900
+
+maildir-utils (0.7-1) unstable; urgency=low
+
+  * Imported Upstream version 0.7
+  * disable upstream included make-index-silent patch
+
+ -- Norbert Preining <preining@debian.org>  Sun, 28 Feb 2010 19:30:03 +0900
+
+maildir-utils (0.6-2) unstable; urgency=low
+
+  * make mu index -q really silent, patch by Michael Guntsche
+    (Closes: #568668)
+  * bump standards version to 3.8.4, no changes necessary
+  * add a README.source file in debian/
+
+ -- Norbert Preining <preining@debian.org>  Thu, 11 Feb 2010 15:54:55 +0900
+
+maildir-utils (0.6-1) unstable; urgency=low
+
+  * new upstream release
+  * debian packaging:
+    - debian/patches: remove fix-maildir-check from queue, included upstream
+
+ -- Norbert Preining <preining@debian.org>  Mon, 01 Feb 2010 10:06:16 +0900
+
+maildir-utils (0.6~beta1-2) unstable; urgency=low
+
+  * add a patch from Michael Guntsche to fix using ~/Maildir by default
+    (Closes: #566183)
+  * debian packaging changes:
+    - debian/patches: add fix-maildir-check patch and series dir
+    - debian/rules: add quilt stuff
+    - debian/control: add quilt to build-dep
+
+ -- Norbert Preining <preining@debian.org>  Fri, 22 Jan 2010 11:52:11 +0900
+
+maildir-utils (0.6~beta1-1) unstable; urgency=low
+
+  * new upstream release 0.6-beta
+    - that merges the several different programs under one binary mu
+    - no sqlite storage is used anymore
+  * debian packaging changes:
+    - debian/patches
+      . remove all patches
+    - remove debian/HOWTO (upstream document) it is completely outdated
+    - debian/control:
+      . adjust build-dep for gmime-2.4
+      . remove build-dep on quilt and sqlite
+      . adjust the description to new reality
+    - debian/rules:
+      . do not try to install doc files that are not present anymore
+      . disable quilt adaptions
+    - add debian/NEWS that explains that the separate programs are gone
+
+ -- Norbert Preining <preining@debian.org>  Tue, 19 Jan 2010 20:12:43 +0900
+
+maildir-utils (0.4-4) unstable; urgency=low
+
+  [ Stefano Zacchiroli ]
+  * Add new patch xapian-cleanup-transaction to avoid one Xapian
+    transaction per delete message upon cleanup. (Closes: #535162)
+
+  [ Norbert Preining ]
+  * switch to source format 3.0 (quilt) and back, I enjoy being
+    hindered in normal dev activity by funny proposals and new formats
+  * add ${misc:Depends} to the dependencies
+
+ -- Norbert Preining <preining@debian.org>  Sun, 17 Jan 2010 02:58:34 +0900
+
+maildir-utils (0.4-3) unstable; urgency=low
+
+  * start using git: import 0.4-1, 0.4-2, add Vcs-{Git,Web} in debian/control
+  * fix debian/rules file for new quilt usage method
+  * add a patch by Michael Guntsche to fix mu-index -q segfault
+    (Closes: #542367)
+  * install HOWTO file from website via debian for now (Closes: #553179)
+  * use dh_prep instead of dh_clean -k
+  * pump standards version to 3.8.3
+  * fix mis-behaviour of mu-find --format=p or --format=P (Closes: #537234)
+
+ -- Norbert Preining <preining@debian.org>  Fri, 30 Oct 2009 03:39:18 +0900
+
+maildir-utils (0.4-2) unstable; urgency=low
+
+  * fix watch file
+
+ -- Norbert Preining <preining@debian.org>  Sun, 28 Dec 2008 22:57:46 +0100
+
+maildir-utils (0.4-1) unstable; urgency=low
+
+  * First release (Closes: #500194)
+
+ -- Norbert Preining <preining@debian.org>  Thu, 04 Dec 2008 19:13:08 +0100

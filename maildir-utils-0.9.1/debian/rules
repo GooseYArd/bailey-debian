@@ -1,0 +1,68 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+export DH_OPTIONS
+
+# not needed, but reminding me helps ...
+#export QUILT_PATCHES=./debian/patches
+include /usr/share/quilt/quilt.make
+
+mu := $(CURDIR)/debian/maildir-utils
+
+
+CFLAGS := -g -Wall
+ifneq "$(findstring noopt,$(DEB_BUILD_OPTIONS))" ""
+CFLAGS += -O0
+else
+CFLAGS += -O2
+endif
+
+build: build-stamp
+
+build-stamp: $(QUILT_STAMPFN)
+	dh_testdir
+	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr
+	$(MAKE)
+	touch $@
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	[ ! -f Makefile ] || $(MAKE) distclean
+	dh_clean install-stamp build-stamp config.log
+
+install: install-stamp
+
+install-stamp: DH_OPTIONS=
+install-stamp: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	$(MAKE) install prefix=$(mu)/usr
+	touch install-stamp
+
+binary-indep:
+# There aren't any architecture independent packages here.
+
+binary-arch: DH_OPTIONS=-a
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installdocs README NEWS TODO debian/README.source
+	#dh_installchangelogs ChangeLog
+	dh_installchangelogs
+ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""
+	dh_strip
+endif
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+
+.PHONY: build clean binary-indep binary-arch binary install
