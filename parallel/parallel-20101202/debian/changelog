@@ -1,5 +1,0 @@
-parallel (20101202-1) unstable; urgency=low
-
-  * Initial release (Closes: #518696)
-
- -- R. Andrew Bailey <bailey@akamai.com>  Fri, 17 Dec 2010 10:17:51 -0500
