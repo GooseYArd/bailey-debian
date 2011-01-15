@@ -19,12 +19,12 @@ Copyright:
 
 License:
 
-    GPL-3
+    GPL-3 or later
 
 The Debian packaging is:
 
     Copyright (C) 2010 R. Andrew Bailey <bailey@akamai.com>
 
-and is licensed under the GPL version 3,
+and is licensed under the GPL version 3 or later,
 see "/usr/share/common-licenses/GPL-3".
 
