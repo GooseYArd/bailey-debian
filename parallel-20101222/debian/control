@@ -6,10 +6,11 @@ Build-Depends: debhelper (>= 7.0.50~), autotools-dev
 Standards-Version: 3.9.1
 Homepage: http://savannah.gnu.org/projects/parallel
 
-
 Package: parallel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, perl 
+Recommends: libdevel-size-perl, libdata-dump-perl
+Conflicts: moreutils
 Description: build and execute shell command lines from standard input in parallel
  GNU parallel is a shell tool for executing jobs concurrently locally
  or using remote computers. A job is typically a single command or a
